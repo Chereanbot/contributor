@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Enhanced Gradient Definitions -->
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2747e8;stop-opacity:0.2">
+                <animate attributeName="stop-opacity" values="0.2;0.5;0.2" dur="6s" repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" style="stop-color:#d420c5;stop-opacity:0.2">
+                <animate attributeName="stop-opacity" values="0.2;0.5;0.2" dur="6s" repeatCount="indefinite"/>
+            </stop>
+        </linearGradient>
+        
+        <!-- Enhanced Team Member Gradients -->
+        <linearGradient id="memberGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2747e8"/>
+            <stop offset="100%" style="stop-color:#5067ed"/>
+            <animate attributeName="x1" values="0%;100%;0%" dur="8s" repeatCount="indefinite"/>
+        </linearGradient>
+        <linearGradient id="memberGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#d420c5"/>
+            <stop offset="100%" style="stop-color:#ff6b6b"/>
+            <animate attributeName="y1" values="0%;100%;0%" dur="8s" repeatCount="indefinite"/>
+        </linearGradient>
+        
+        <!-- Data Flow Animation -->
+        <pattern id="dataFlow" width="30" height="30" patternUnits="userSpaceOnUse">
+            <circle r="2" cx="15" cy="15" fill="white">
+                <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+            </circle>
+        </pattern>
+        
+        <!-- Enhanced Glow Effects -->
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <filter id="neonGlow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feFlood flood-color="#5067ed" flood-opacity="0.5" result="color"/>
+            <feComposite in="color" in2="blur" operator="in" result="glow"/>
+            <feMerge>
+                <feMergeNode in="glow"/>
+                <feMergeNode in="glow"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Hover Animation -->
+        <animate id="pulseAnimation"
+            attributeName="r"
+            values="35;40;35"
+            dur="1s"
+            begin="mouseover"
+            end="mouseout"/>
+
+        <!-- Rotating Animation -->
+        <animateTransform
+            id="rotate"
+            attributeName="transform"
+            attributeType="XML"
+            type="rotate"
+            from="0 400 300"
+            to="360 400 300"
+            dur="30s"
+            repeatCount="indefinite"/>
+    </defs>
+
+    <!-- Enhanced Background Elements -->
+    <circle cx="400" cy="300" r="250" fill="url(#grad1)">
+        <animate attributeName="r" values="250;270;250" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Dynamic Grid Pattern with Enhanced Animation -->
+    <g opacity="0.1">
+        <path d="M100 100 h600" stroke="#5067ed" stroke-width="1.5">
+            <animate attributeName="stroke-opacity" values="0.1;0.6;0.1" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="20s" repeatCount="indefinite"/>
+        </path>
+        <path d="M100 200 h600" stroke="#5067ed" stroke-width="1.5">
+            <animate attributeName="stroke-opacity" values="0.1;0.6;0.1" dur="4s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="20s" repeatCount="indefinite"/>
+        </path>
+        <path d="M100 300 h600" stroke="#5067ed" stroke-width="1.5">
+            <animate attributeName="stroke-opacity" values="0.1;0.6;0.1" dur="4s" repeatCount="indefinite" begin="2s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="20s" repeatCount="indefinite"/>
+        </path>
+        <path d="M100 400 h600" stroke="#5067ed" stroke-width="1.5">
+            <animate attributeName="stroke-opacity" values="0.1;0.6;0.1" dur="4s" repeatCount="indefinite" begin="3s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="20s" repeatCount="indefinite"/>
+        </path>
+    </g>
+
+    <!-- Enhanced Central Project Hub -->
+    <g filter="url(#neonGlow)">
+        <circle cx="400" cy="300" r="90" stroke="url(#memberGrad1)" stroke-width="4" fill="none">
+            <animate attributeName="r" values="90;100;90" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="1;0.5;1" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="400" cy="300" r="70" stroke="url(#memberGrad2)" stroke-width="3" fill="none">
+            <animate attributeName="r" values="70;80;70" dur="4s" repeatCount="indefinite" begin="2s"/>
+        </circle>
+    </g>
+
+    <!-- Team Member Nodes with Interactive Effects -->
+    <g id="team-members">
+        <!-- Cherinet (Project Lead) -->
+        <g transform="translate(250,150)" filter="url(#neonGlow)" class="team-member">
+            <circle r="35" fill="url(#memberGrad1)">
+                <animate attributeName="r" values="35;38;35" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="r" values="35;40;35" dur="0.5s" begin="mouseover" end="mouseout"/>
+            </circle>
+            <text x="0" y="-5" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+                Cherinet
+                <animate attributeName="font-size" values="14;15;14" dur="3s" repeatCount="indefinite"/>
+            </text>
+            <text x="0" y="12" text-anchor="middle" fill="white" font-size="11">Lead</text>
+        </g>
+        
+        <!-- Amanuel (Frontend) -->
+        <g transform="translate(550,150)" filter="url(#neonGlow)" class="team-member">
+            <circle r="35" fill="url(#memberGrad2)">
+                <animate attributeName="r" values="35;38;35" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+                <animate attributeName="r" values="35;40;35" dur="0.5s" begin="mouseover" end="mouseout"/>
+            </circle>
+            <text x="0" y="-5" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+                Amanuel
+                <animate attributeName="font-size" values="14;15;14" dur="3s" repeatCount="indefinite"/>
+            </text>
+            <text x="0" y="12" text-anchor="middle" fill="white" font-size="11">Frontend</text>
+        </g>
+        
+        <!-- Bisrat (Backend) -->
+        <g transform="translate(150,300)" filter="url(#neonGlow)">
+            <circle r="35" fill="url(#memberGrad1)">
+                <animate attributeName="r" values="35;38;35" dur="3s" repeatCount="indefinite" begin="1s"/>
+            </circle>
+            <text x="0" y="-5" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+                Bisrat
+                <animate attributeName="font-size" values="14;15;14" dur="3s" repeatCount="indefinite"/>
+            </text>
+            <text x="0" y="12" text-anchor="middle" fill="white" font-size="11">Backend</text>
+        </g>
+        
+        <!-- Deginet (UI/UX) -->
+        <g transform="translate(650,300)" filter="url(#neonGlow)">
+            <circle r="35" fill="url(#memberGrad2)">
+                <animate attributeName="r" values="35;38;35" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+            </circle>
+            <text x="0" y="-5" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+                Deginet
+                <animate attributeName="font-size" values="14;15;14" dur="3s" repeatCount="indefinite"/>
+            </text>
+            <text x="0" y="12" text-anchor="middle" fill="white" font-size="11">UI/UX</text>
+        </g>
+        
+        <!-- Astarekegn (Testing) -->
+        <g transform="translate(250,450)" filter="url(#neonGlow)">
+            <circle r="35" fill="url(#memberGrad1)">
+                <animate attributeName="r" values="35;38;35" dur="3s" repeatCount="indefinite" begin="2s"/>
+            </circle>
+            <text x="0" y="-5" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+                Astarekegn
+                <animate attributeName="font-size" values="14;15;14" dur="3s" repeatCount="indefinite"/>
+            </text>
+            <text x="0" y="12" text-anchor="middle" fill="white" font-size="11">Testing</text>
+        </g>
+        
+        <!-- Solomon (DevOps) -->
+        <g transform="translate(550,450)" filter="url(#neonGlow)">
+            <circle r="35" fill="url(#memberGrad2)">
+                <animate attributeName="r" values="35;38;35" dur="3s" repeatCount="indefinite" begin="2.5s"/>
+            </circle>
+            <text x="0" y="-5" text-anchor="middle" fill="white" font-size="14" font-weight="bold">
+                Dinkie G.
+                <animate attributeName="font-size" values="14;15;14" dur="3s" repeatCount="indefinite"/>
+            </text>
+            <text x="0" y="12" text-anchor="middle" fill="white" font-size="11">Advisor</text>
+        </g>
+    </g>
+
+    <!-- Enhanced Connection Lines with Data Flow -->
+    <g stroke-width="3" filter="url(#neonGlow)">
+        <!-- Connection lines with data flow animation -->
+        <line x1="250" y1="150" x2="400" y2="300" stroke="url(#memberGrad1)">
+            <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <!-- Add pattern for data flow -->
+        <circle r="4" fill="white">
+            <animateMotion dur="3s" repeatCount="indefinite">
+                <mpath href="#path1"/>
+            </animateMotion>
+        </circle>
+        <path id="path1" d="M250 150 L400 300" style="visibility: hidden;"/>
+        
+        <!-- Repeat for other connection lines -->
+        <line x1="550" y1="150" x2="400" y2="300" stroke="url(#memberGrad2)">
+            <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="150" y1="300" x2="400" y2="300" stroke="url(#memberGrad1)">
+            <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="650" y1="300" x2="400" y2="300" stroke="url(#memberGrad2)">
+            <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="250" y1="450" x2="400" y2="300" stroke="url(#memberGrad1)">
+            <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="2s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="550" y1="450" x2="400" y2="300" stroke="url(#memberGrad2)">
+            <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="stroke-dasharray" values="0,20;20,20" dur="3s" repeatCount="indefinite"/>
+        </line>
+    </g>
+
+    <!-- Interactive Technology Stack -->
+    <g id="tech-stack" transform="translate(400,300)">
+        <g>
+            <!-- React -->
+            <circle cx="-50" cy="0" r="20" fill="#61DAFB" filter="url(#glow)">
+                <animate attributeName="cy" values="0;-15;0" dur="4s" repeatCount="indefinite"/>
+                <animate attributeName="r" values="20;22;20" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <text x="-50" y="0" text-anchor="middle" fill="white" font-size="10">React</text>
+            
+            <!-- Node.js -->
+            <circle cx="50" cy="0" r="20" fill="#68A063" filter="url(#glow)">
+                <animate attributeName="cy" values="0;15;0" dur="4s" repeatCount="indefinite"/>
+                <animate attributeName="r" values="20;22;20" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <text x="50" y="0" text-anchor="middle" fill="white" font-size="10">Node.js</text>
+            
+            <!-- MongoDB -->
+            <circle cx="0" cy="-50" r="20" fill="#4DB33D" filter="url(#glow)">
+                <animate attributeName="cx" values="0;15;0" dur="4s" repeatCount="indefinite"/>
+                <animate attributeName="r" values="20;22;20" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <text x="0" y="-50" text-anchor="middle" fill="white" font-size="10">MongoDB</text>
+            
+            <!-- AWS -->
+            <circle cx="0" cy="50" r="20" fill="#FF9900" filter="url(#glow)">
+                <animate attributeName="cx" values="0;-15;0" dur="4s" repeatCount="indefinite"/>
+                <animate attributeName="r" values="20;22;20" dur="4s" repeatCount="indefinite"/>
+            </circle>
+            <text x="0" y="50" text-anchor="middle" fill="white" font-size="10">AWS</text>
+        </g>
+    </g>
+
+    <!-- Enhanced Pulse Rings with Interaction -->
+    <g filter="url(#glow)">
+        <circle cx="400" cy="300" r="120" stroke="url(#memberGrad1)" stroke-width="2" fill="none" opacity="0.3">
+            <animate attributeName="r" values="120;180;120" dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="0.3;0;0.3" dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="120;190;120" dur="1s" begin="mouseover" end="mouseout"/>
+        </circle>
+        <circle cx="400" cy="300" r="150" stroke="url(#memberGrad2)" stroke-width="2" fill="none" opacity="0.2">
+            <animate attributeName="r" values="150;210;150" dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="0.2;0;0.2" dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="150;220;150" dur="1s" begin="mouseover" end="mouseout"/>
+        </circle>
+    </g>
+
+    <!-- Enhanced Floating Particles -->
+    <g id="particles">
+        <g transform="translate(400,300)">
+            <circle cx="-100" cy="-100" r="4" fill="#2747e8">
+                <animate attributeName="cy" values="-100;-110;-100" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="100" cy="-100" r="4" fill="#d420c5">
+                <animate attributeName="cy" values="-100;-90;-100" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="-100" cy="100" r="4" fill="#5067ed">
+                <animate attributeName="cx" values="-100;-110;-100" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="100" cy="100" r="4" fill="#2747e8">
+                <animate attributeName="cx" values="100;110;100" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </g>
+
+    <!-- Enhanced Project Title with Interaction -->
+    <g transform="translate(400,300)" filter="url(#neonGlow)">
+        <text text-anchor="middle" fill="#fff" font-size="24" font-weight="bold">
+            <tspan x="0" y="0">Final Year Project</tspan>
+            <tspan x="0" y="25" font-size="16">Group Six</tspan>
+            <animate attributeName="font-size" values="24;26;24" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="font-size" values="24;28;24" dur="0.5s" begin="mouseover" end="mouseout"/>
+        </text>
+    </g>
+</svg> 

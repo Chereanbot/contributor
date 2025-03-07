@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Court Case Management System - Project Gallery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <!-- Add this right after the opening body tag -->
+    <div class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Gallery...</div>
+        </div>
+    </div>
+
+    <!-- Add this right after the opening body tag -->
+    <div class="custom-cursor"></div>
+    <div class="success-message" style="display: none;">Item viewed successfully! 🎉</div>
+
+    <!-- Add this before the gallery grid -->
+    <div class="particle-container">
+        <div class="particle" style="--moveX: 100px; --moveY: -200px;"></div>
+        <div class="particle" style="--moveX: -150px; --moveY: 300px;"></div>
+        <div class="particle" style="--moveX: 300px; --moveY: 100px;"></div>
+        <div class="particle" style="--moveX: -200px; --moveY: -150px;"></div>
+        <div class="particle" style="--moveX: 250px; --moveY: 200px;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Du Las</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="project-details.html">Project Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Container -->
+    <div class="gallery-container">
+        <div class="container">
+            <!-- Gallery Header -->
+            <div class="gallery-header">
+                <h1>System Features Gallery</h1>
+                <p>Explore the comprehensive features and functionalities of our Court Case Management System</p>
+            </div>
+
+            <!-- Gallery Categories -->
+            <div class="gallery-categories">
+                <button class="category-btn active" data-category="all">All Features</button>
+                <button class="category-btn" data-category="user-roles">User Roles</button>
+                <button class="category-btn" data-category="case-management">Case Management</button>
+                <button class="category-btn" data-category="office-management">Office Management</button>
+                <button class="category-btn" data-category="client-interface">Client Interface</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- User Roles Section -->
+                <div class="gallery-item" data-category="user-roles">
+                    <img src="assets/gallery1.jpg" alt="Admin Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Super Admin Dashboard</h3>
+                        <p>Comprehensive system administration and management interface</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="user-roles">
+                    <img src="assets/lawyer-dashboard.jpg" alt="Lawyer Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Lawyer Interface</h3>
+                        <p>Streamlined case management and client interaction platform</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="user-roles">
+                    <img src="assets/coordinator-dashboard.jpg" alt="Coordinator Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Coordinator Dashboard</h3>
+                        <p>Efficient case registration and assignment system</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+
+                <!-- Case Management Section -->
+                <div class="gallery-item" data-category="case-management">
+                    <img src="assets/case-registration.jpg" alt="Case Registration">
+                    <div class="gallery-overlay">
+                        <h3>Case Registration</h3>
+                        <p>Digital case filing and documentation system</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="case-management">
+                    <img src="assets/case-tracking.jpg" alt="Case Tracking">
+                    <div class="gallery-overlay">
+                        <h3>Case Tracking</h3>
+                        <p>Real-time case status monitoring and updates</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="case-management">
+                    <img src="assets/document.jpg" alt="Document Management">
+                    <div class="gallery-overlay">
+                        <h3>Document Management</h3>
+                        <p>Secure document storage and retrieval system</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+
+                <!-- Office Management Section -->
+                <div class="gallery-item" data-category="office-management">
+                    <img src="assets/office-dashboard.jpg" alt="Office Dashboard">
+                    <div class="gallery-overlay">
+                        <h3>Office Dashboard</h3>
+                        <p>Comprehensive office performance monitoring</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="office-management">
+                    <img src="assets/staff-management.jpg" alt="Staff Management">
+                    <div class="gallery-overlay">
+                        <h3>Staff Management</h3>
+                        <p>Efficient personnel and resource allocation system</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="office-management">
+                    <img src="assets/reporting.jpg" alt="Reporting System">
+                    <div class="gallery-overlay">
+                        <h3>Reporting System</h3>
+                        <p>Advanced reporting and analytics platform</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+
+                <!-- Client Interface Section -->
+                <div class="gallery-item" data-category="client-interface">
+                    <img src="assets/client-portal.jpg" alt="Client Portal">
+                    <div class="gallery-overlay">
+                        <h3>Client Portal</h3>
+                        <p>User-friendly case status and communication interface</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="client-interface">
+                    <img src="assets/appointment-booking.jpg" alt="Appointment Booking">
+                    <div class="gallery-overlay">
+                        <h3>Appointment Booking</h3>
+                        <p>Convenient online scheduling system</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+                <div class="gallery-item" data-category="client-interface">
+                    <img src="assets/client-documents.jpg" alt="Client Documents">
+                    <div class="gallery-overlay">
+                        <h3>Document Access</h3>
+                        <p>Secure document sharing and access platform</p>
+                    </div>
+                    <div class="hover-message">Click to view details!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="" alt="Gallery Image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>&copy; 2024 Court Case Management System - Dilla University. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add this before the closing body tag -->
+    <div class="detail-modal">
+        <div class="detail-content">
+            <div class="detail-header">
+                <img src="" alt="Detail Image" class="detail-image">
+                <div class="detail-info">
+                    <h2></h2>
+                    <p></p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="detail-section">
+                    <h3>Features</h3>
+                    <ul class="features-list"></ul>
+                </div>
+                <div class="detail-section">
+                    <h3>Technical Details</h3>
+                    <ul class="technical-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Gallery Category Filter
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Gallery Modal
+        const modal = document.querySelector('.gallery-modal');
+        const modalImg = modal.querySelector('img');
+        const closeBtn = modal.querySelector('.modal-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                modalImg.src = imgSrc;
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Gallery data
+        const galleryData = {
+            'gallery1.jpg': {
+                title: 'Super Admin Dashboard',
+                description: 'Comprehensive system administration and management interface',
+                features: [
+                    'User Management System',
+                    'Role-based Access Control',
+                    'System Configuration Panel',
+                    'Analytics Dashboard'
+                ],
+                technical: [
+                    'React.js Frontend',
+                    'Node.js Backend',
+                    'MongoDB Database',
+                    'JWT Authentication'
+                ]
+            },
+            'lawyer-dashboard.jpg': {
+                title: 'Lawyer Interface',
+                description: 'Streamlined case management and client interaction platform',
+                features: [
+                    'Case Management System',
+                    'Client Communication Portal',
+                    'Document Management',
+                    'Calendar Integration'
+                ],
+                technical: [
+                    'Real-time Updates',
+                    'Secure File Sharing',
+                    'API Integration',
+                    'Responsive Design'
+                ]
+            },
+            // Add more items as needed
+        };
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 500);
+        });
+
+        // Gallery item click handler
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const imgSrc = img.src.split('/').pop();
+                const data = galleryData[imgSrc];
+
+                if (data) {
+                    const detailModal = document.querySelector('.detail-modal');
+                    const detailImage = detailModal.querySelector('.detail-image');
+                    const detailTitle = detailModal.querySelector('.detail-info h2');
+                    const detailDesc = detailModal.querySelector('.detail-info p');
+                    const featuresList = detailModal.querySelector('.features-list');
+                    const technicalList = detailModal.querySelector('.technical-list');
+
+                    detailImage.src = img.src;
+                    detailTitle.textContent = data.title;
+                    detailDesc.textContent = data.description;
+
+                    featuresList.innerHTML = data.features.map(feature => 
+                        `<li>${feature}</li>`
+                    ).join('');
+
+                    technicalList.innerHTML = data.technical.map(tech => 
+                        `<li>${tech}</li>`
+                    ).join('');
+
+                    detailModal.style.display = 'flex';
+                    item.classList.add('clicked');
+                    setTimeout(() => item.classList.remove('clicked'), 500);
+                }
+            });
+        });
+
+        // Close detail modal
+        document.querySelector('.detail-modal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('detail-modal')) {
+                e.target.style.display = 'none';
+            }
+        });
+
+        // Enhanced category filter animation
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.getAttribute('data-category');
+                const items = document.querySelectorAll('.gallery-item');
+
+                items.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        item.style.animation = 'slideInUp 0.5s ease-out';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add success animation on hover
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const message = item.querySelector('.hover-message');
+                message.textContent = 'Congratulations! Click to explore more!';
+                message.classList.add('success-animation');
+            });
+
+            item.addEventListener('mouseleave', () => {
+                const message = item.querySelector('.hover-message');
+                message.textContent = 'Click to view details!';
+                message.classList.remove('success-animation');
+            });
+        });
+
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Image tilt effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                item.style.setProperty('--rotateX', `${rotateX}deg`);
+                item.style.setProperty('--rotateY', `${rotateY}deg`);
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.setProperty('--rotateX', '0deg');
+                item.style.setProperty('--rotateY', '0deg');
+            });
+        });
+
+        // Success message
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const successMessage = document.querySelector('.success-message');
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            });
+        });
+
+        // Particle effects
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.setProperty('--moveX', `${Math.random() * 400 - 200}px`);
+            particle.style.setProperty('--moveY', `${Math.random() * 400 - 200}px`);
+            document.querySelector('.particle-container').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 10000);
+        }
+
+        setInterval(createParticle, 2000);
+
+        // Enhanced hover effects
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const message = item.querySelector('.hover-message');
+                const randomMessages = [
+                    'Amazing feature! 🌟',
+                    'Click to explore! ✨',
+                    'Discover more! 🎉',
+                    'Awesome design! 🎨',
+                    'Check this out! 🚀'
+                ];
+                message.textContent = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+            });
+        });
+
+        // Category button effects
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                btn.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 1000);
+                
+                // Show success message
+                const successMessage = document.querySelector('.success-message');
+                successMessage.textContent = `Viewing ${btn.textContent} 🎉`;
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            });
+        });
+
+        // Enhanced loading animation
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.gallery-item').forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Smooth scroll with enhanced animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollBy({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Interactive gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = item.getBoundingClientRect();
+                const x = (e.clientX - left) / width;
+                const y = (e.clientY - top) / height;
+
+                const move = 30;
+                const rotateX = (y - 0.5) * move;
+                const rotateY = (x - 0.5) * move;
+
+                item.style.transform = `
+                    perspective(1000px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    scale3d(1.05, 1.05, 1.05)
+                `;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = '';
+            });
+        });
+
+        // Magnetic Effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const strength = 10;
+                item.style.setProperty('--magnetic-x', `${x / strength}px`);
+                item.style.setProperty('--magnetic-y', `${y / strength}px`);
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.setProperty('--magnetic-x', '0px');
+                item.style.setProperty('--magnetic-y', '0px');
+            });
+        });
+
+        // Bubble Effect
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.top = `${Math.random() * 100}%`;
+            
+            bubble.style.setProperty('--travel-x', `${(Math.random() - 0.5) * 200}px`);
+            bubble.style.setProperty('--travel-y', `${-Math.random() * 200}px`);
+            bubble.style.setProperty('--duration', `${Math.random() * 2 + 2}s`);
+            
+            document.querySelector('.gallery-container').appendChild(bubble);
+            
+            setTimeout(() => bubble.remove(), 4000);
+        }
+        
+        setInterval(createBubble, 300);
+
+        // Particle Trail Effect
+        let particles = [];
+        const maxParticles = 20;
+
+        document.addEventListener('mousemove', (e) => {
+            const particle = document.createElement('div');
+            particle.className = 'trail-particle';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            
+            document.body.appendChild(particle);
+            particles.push(particle);
+            
+            if (particles.length > maxParticles) {
+                const oldParticle = particles.shift();
+                oldParticle.remove();
+            }
+            
+            setTimeout(() => {
+                particle.remove();
+                particles = particles.filter(p => p !== particle);
+            }, 1000);
+        });
+
+        // Ripple Effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple-effect';
+                
+                const rect = item.getBoundingClientRect();
+                ripple.style.left = `${e.clientX - rect.left}px`;
+                ripple.style.top = `${e.clientY - rect.top}px`;
+                
+                item.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // 3D Flip Effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.classList.add('flip');
+        });
+
+        // Enhanced Hover Messages
+        const messages = [
+            '✨ Incredible Feature!',
+            '�� Amazing Design!',
+            '🎉 Outstanding Work!',
+            '🚀 Revolutionary!',
+            '💫 Simply Brilliant!',
+            '🎨 Beautiful Design!',
+            '🌈 Spectacular!',
+            '🎯 Perfect Choice!',
+            '🏆 Award-worthy!',
+            '💎 Premium Quality!'
+        ];
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const message = item.querySelector('.hover-message');
+                message.textContent = messages[Math.floor(Math.random() * messages.length)];
+                message.style.animation = 'floatMessage 3s ease-in-out infinite';
+            });
+        });
+
+        // Glitch Text Effect
+        document.querySelectorAll('.gallery-overlay h3').forEach(heading => {
+            heading.setAttribute('data-text', heading.textContent);
+        });
+
+        // Dynamic Background Particles
+        function createBackgroundParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'background-particle';
+            
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 20 + 10;
+            particle.style.animation = `floatParticle ${duration}s linear infinite`;
+            
+            document.querySelector('.gallery-container').appendChild(particle);
+        }
+
+        for (let i = 0; i < 50; i++) {
+            createBackgroundParticle();
+        }
+
+        // Interactive Loading Animation
+        const loadingSpinner = document.querySelector('.loading-spinner');
+        if (loadingSpinner) {
+            document.addEventListener('mousemove', (e) => {
+                const rect = loadingSpinner.getBoundingClientRect();
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+                
+                const angle = Math.atan2(y, x) * (180 / Math.PI);
+                loadingSpinner.style.transform = `rotate(${angle}deg)`;
+            });
+        }
+
+        // Enhanced Success Message
+        function showSuccessMessage(text) {
+            const message = document.querySelector('.success-message');
+            message.textContent = text;
+            message.style.display = 'block';
+            message.style.animation = 'bounceInRight 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            
+            setTimeout(() => {
+                message.style.animation = 'bounceOutRight 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 800);
+            }, 2000);
+        }
+
+        // Interactive Category Buttons
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                btn.style.setProperty('--x', `${x}px`);
+                btn.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html> 
