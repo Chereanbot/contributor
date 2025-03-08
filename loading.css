@@ -1,0 +1,567 @@
+/* Loading Screen Container */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a237e, #0d47a1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.5s ease-out;
+    overflow: hidden;
+}
+
+/* SVG Loading Animation Container */
+.loading-animation {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+/* Main Circle Animation */
+.loading-circle {
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transform-origin: center;
+    animation: circleRotate 3s ease-in-out infinite;
+}
+
+/* Pulse Effect */
+.pulse-circle {
+    fill: rgba(255, 255, 255, 0.1);
+    transform-origin: center;
+    animation: pulseEffect 2s ease-in-out infinite;
+}
+
+/* Rotating Dots */
+.rotating-dots circle {
+    fill: var(--primary-color);
+    transform-origin: center;
+    animation: dotRotate 2s ease-in-out infinite;
+}
+
+.rotating-dots circle:nth-child(1) { animation-delay: 0s; }
+.rotating-dots circle:nth-child(2) { animation-delay: 0.2s; }
+.rotating-dots circle:nth-child(3) { animation-delay: 0.4s; }
+.rotating-dots circle:nth-child(4) { animation-delay: 0.6s; }
+
+/* Text Animation */
+.loading-text {
+    font-family: 'Atma', sans-serif;
+    font-size: 24px;
+    fill: #fff;
+    opacity: 0;
+    animation: textFade 2s ease-in-out infinite;
+}
+
+/* Particle Effects */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    animation: particleFloat 3s ease-in-out infinite;
+}
+
+/* Generate multiple particles */
+.particle:nth-child(1) { left: 20%; top: 20%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 80%; top: 20%; animation-delay: 0.5s; }
+.particle:nth-child(3) { left: 20%; top: 80%; animation-delay: 1s; }
+.particle:nth-child(4) { left: 80%; top: 80%; animation-delay: 1.5s; }
+
+/* Wave Effect */
+.wave-circle {
+    stroke: var(--secondary-color);
+    stroke-width: 2;
+    fill: none;
+    animation: waveEffect 3s ease-in-out infinite;
+}
+
+/* Glow Effect */
+.glow-effect {
+    filter: url(#glow);
+}
+
+/* Animations */
+@keyframes circleRotate {
+    0% {
+        stroke-dashoffset: 283;
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        stroke-dashoffset: 0;
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        stroke-dashoffset: -283;
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes pulseEffect {
+    0%, 100% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.7;
+    }
+}
+
+@keyframes dotRotate {
+    0% {
+        transform: rotate(0deg) translate(30px) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) translate(30px) rotate(-180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) translate(30px) rotate(-360deg) scale(1);
+    }
+}
+
+@keyframes textFade {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(20px, -20px);
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes waveEffect {
+    0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Loading Progress Bar */
+.loading-progress {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        var(--primary-color), 
+        var(--secondary-color), 
+        var(--primary-color));
+    background-size: 200% 100%;
+    animation: 
+        progressAnimation 2s ease-in-out infinite,
+        gradientMove 2s linear infinite;
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0%;
+        transform: translateX(-100%);
+    }
+    50% {
+        width: 100%;
+        transform: translateX(0);
+    }
+    100% {
+        width: 0%;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+/* Hide loading screen when content is loaded */
+.loading-screen.loaded {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Pattern Background */
+.pattern-bg {
+    animation: patternRotate 20s linear infinite;
+}
+
+.morph-circle {
+    animation: morphShape 3s ease-in-out infinite;
+}
+
+/* Constellation Effect */
+.constellation-line {
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 0.5;
+    animation: constellationFade 3s ease-in-out infinite;
+}
+
+.constellation-dot {
+    fill: rgba(255, 255, 255, 0.5);
+    animation: constellationPulse 2s ease-in-out infinite;
+}
+
+/* DNA Helix */
+.dna-strand {
+    stroke: var(--secondary-color);
+    stroke-width: 1;
+    opacity: 0.5;
+    animation: dnaRotate 4s linear infinite;
+}
+
+.dna-node {
+    fill: var(--primary-color);
+    animation: dnaNodePulse 2s ease-in-out infinite;
+}
+
+/* Geometric Patterns */
+.geo-shape {
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 0.5;
+    animation: geoMorph 3s ease-in-out infinite;
+}
+
+/* 3D Cube */
+.cube {
+    animation: cubeRotate 6s linear infinite;
+}
+
+.cube-face {
+    fill: none;
+    stroke: var(--secondary-color);
+    stroke-width: 1;
+    opacity: 0.5;
+}
+
+/* Enhanced Text Animation */
+.loading-char {
+    animation: charFloat 2s ease-in-out infinite;
+    animation-delay: calc(var(--char-index) * 0.1s);
+}
+
+/* Enhanced Particle Container */
+.particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    animation: enhancedParticleFloat 4s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+/* New Animations */
+@keyframes patternRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes morphShape {
+    0%, 100% { r: 5; }
+    50% { r: 8; }
+}
+
+@keyframes constellationFade {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes constellationPulse {
+    0%, 100% { r: 1; opacity: 0.5; }
+    50% { r: 2; opacity: 1; }
+}
+
+@keyframes dnaRotate {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+@keyframes dnaNodePulse {
+    0%, 100% { r: 2; opacity: 0.5; }
+    50% { r: 3; opacity: 1; }
+}
+
+@keyframes geoMorph {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+}
+
+@keyframes cubeRotate {
+    0% { transform: translate(50px, 50px) scale(0.3) rotateX(0deg) rotateY(0deg); }
+    100% { transform: translate(50px, 50px) scale(0.3) rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes charFloat {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes enhancedParticleFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    25% {
+        transform: translate(var(--x1), var(--y1)) scale(1.5);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(var(--x2), var(--y2)) scale(1);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translate(var(--x3), var(--y3)) scale(1.5);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(var(--x4), var(--y4)) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Group Text Styles */
+.group-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    display: flex;
+    gap: 10px;
+}
+
+.text-char {
+    display: inline-block;
+    animation: textPulse 2s ease-in-out infinite;
+    filter: url(#glow);
+}
+
+.text-char:nth-child(1) { animation-delay: 0s; }
+.text-char:nth-child(2) { animation-delay: 0.1s; }
+.text-char:nth-child(3) { animation-delay: 0.2s; }
+.text-char:nth-child(4) { animation-delay: 0.3s; }
+.text-char:nth-child(5) { animation-delay: 0.4s; }
+.text-char:nth-child(6) { animation-delay: 0.5s; }
+.text-char:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes textPulse {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.5;
+        filter: blur(0px);
+    }
+    50% {
+        transform: scale(1.2) rotate(5deg);
+        opacity: 1;
+        filter: blur(1px);
+    }
+}
+
+/* Loading Animation Container */
+.loading-animation {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    filter: url(#glow);
+}
+
+/* Main Loader Group */
+.main-loader {
+    transform-origin: center;
+    animation: mainLoaderRotate 8s linear infinite;
+}
+
+@keyframes mainLoaderRotate {
+    0% { transform: rotate(0deg) scale(0.95); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(0.95); }
+}
+
+/* Center Glow */
+.center-glow {
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* Enhanced Loading Text Container */
+.loading-text-container {
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Atma', sans-serif;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+.loading-text {
+    display: flex;
+    gap: 5px;
+    filter: url(#glow);
+}
+
+.loading-char {
+    display: inline-block;
+    animation: charFloat 2s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced Progress Bar */
+.loading-progress {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        var(--primary-color), 
+        var(--secondary-color), 
+        var(--primary-color));
+    background-size: 200% 100%;
+    animation: 
+        progressAnimation 2s ease-in-out infinite,
+        gradientMove 2s linear infinite;
+    position: relative;
+}
+
+.progress-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    animation: progressGlow 2s linear infinite;
+}
+
+@keyframes progressGlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Enhanced Particle System */
+.particle-group {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    animation: enhancedParticleFloat 4s ease-in-out infinite;
+    filter: blur(1px) url(#glow);
+}
+
+/* New Animation for DNA Helix */
+.dna-helix {
+    animation: dnaFloat 6s ease-in-out infinite;
+}
+
+@keyframes dnaFloat {
+    0%, 100% {
+        transform: translateY(-10px) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(10px) rotateY(180deg);
+    }
+}
+
+/* Enhanced Geometric Patterns */
+.geometric-patterns {
+    animation: geoFloat 8s linear infinite;
+}
+
+@keyframes geoFloat {
+    0% {
+        transform: rotate(0deg) translateY(0);
+    }
+    25% {
+        transform: rotate(90deg) translateY(10px);
+    }
+    50% {
+        transform: rotate(180deg) translateY(0);
+    }
+    75% {
+        transform: rotate(270deg) translateY(-10px);
+    }
+    100% {
+        transform: rotate(360deg) translateY(0);
+    }
+} 

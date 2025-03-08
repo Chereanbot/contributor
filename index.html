@@ -14,8 +14,160 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Loading Animation CSS -->
+    <link rel="stylesheet" href="loading.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <!-- Group Text -->
+        <div class="group-text">
+            <span class="text-char">G</span>
+            <span class="text-char">R</span>
+            <span class="text-char">O</span>
+            <span class="text-char">U</span>
+            <span class="text-char">P</span>
+            <span class="text-char">-</span>
+            <span class="text-char">6</span>
+        </div>
+
+        <svg class="loading-animation" viewBox="0 0 100 100">
+            <!-- Enhanced Filters -->
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+
+                <!-- Advanced Turbulence Filter -->
+                <filter id="turbulence">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="turbulence"/>
+                    <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10"/>
+                </filter>
+
+                <!-- Liquid Effect -->
+                <filter id="liquid">
+                    <feTurbulence type="turbulence" baseFrequency="0.009" numOctaves="5" seed="2" stitchTiles="stitch"/>
+                    <feDisplacementMap in="SourceGraphic" scale="30"/>
+                </filter>
+
+                <!-- Enhanced Morphing Pattern -->
+                <pattern id="morphPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle class="morph-circle" cx="10" cy="10" r="5" fill="rgba(255,255,255,0.1)"/>
+                </pattern>
+
+                <!-- Gradient Definitions -->
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color: var(--primary-color)"/>
+                    <stop offset="50%" style="stop-color: var(--secondary-color)"/>
+                    <stop offset="100%" style="stop-color: var(--primary-color)"/>
+                </linearGradient>
+
+                <!-- Radial Gradient -->
+                <radialGradient id="centerGlow">
+                    <stop offset="0%" stop-color="white" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="white" stop-opacity="0"/>
+                </radialGradient>
+            </defs>
+
+            <!-- Background Elements -->
+            <rect class="pattern-bg" width="100" height="100" fill="url(#morphPattern)"/>
+            
+            <!-- Enhanced Constellation -->
+            <g class="constellation">
+                <line x1="20" y1="20" x2="40" y2="40" class="constellation-line"/>
+                <line x1="40" y1="40" x2="60" y2="20" class="constellation-line"/>
+                <line x1="60" y1="20" x2="80" y2="40" class="constellation-line"/>
+                <circle cx="20" cy="20" r="1" class="constellation-dot"/>
+                <circle cx="40" cy="40" r="1" class="constellation-dot"/>
+                <circle cx="60" cy="20" r="1" class="constellation-dot"/>
+                <circle cx="80" cy="40" r="1" class="constellation-dot"/>
+            </g>
+
+            <!-- Enhanced DNA Helix -->
+            <g class="dna-helix" filter="url(#liquid)">
+                <path class="dna-strand" d="M30,20 Q50,50 30,80" fill="none"/>
+                <path class="dna-strand" d="M70,20 Q50,50 70,80" fill="none"/>
+                <circle class="dna-node" cx="30" cy="30" r="2"/>
+                <circle class="dna-node" cx="70" cy="30" r="2"/>
+                <circle class="dna-node" cx="30" cy="50" r="2"/>
+                <circle class="dna-node" cx="70" cy="50" r="2"/>
+                <circle class="dna-node" cx="30" cy="70" r="2"/>
+                <circle class="dna-node" cx="70" cy="70" r="2"/>
+            </g>
+
+            <!-- Geometric Patterns -->
+            <g class="geometric-patterns" filter="url(#turbulence)">
+                <polygon class="geo-shape" points="50,20 60,40 40,40"/>
+                <rect class="geo-shape" x="45" y="45" width="10" height="10"/>
+                <circle class="geo-shape" cx="50" cy="70" r="5"/>
+            </g>
+
+            <!-- Enhanced Loading Elements -->
+            <g class="main-loader">
+                <circle class="pulse-circle" cx="50" cy="50" r="40"/>
+                <circle class="loading-circle glow-effect" cx="50" cy="50" r="45" 
+                        stroke="url(#gradient)" stroke-width="2" fill="none"/>
+                <circle class="wave-circle" cx="50" cy="50" r="35"/>
+                <circle class="wave-circle" cx="50" cy="50" r="25" style="animation-delay: -1s"/>
+            </g>
+
+            <!-- Enhanced Rotating Dots -->
+            <g class="rotating-dots">
+                <circle cx="50" cy="20" r="3"/>
+                <circle cx="80" cy="50" r="3"/>
+                <circle cx="50" cy="80" r="3"/>
+                <circle cx="20" cy="50" r="3"/>
+                <circle cx="65" cy="25" r="2"/>
+                <circle cx="75" cy="65" r="2"/>
+                <circle cx="35" cy="75" r="2"/>
+                <circle cx="25" cy="35" r="2"/>
+            </g>
+
+            <!-- 3D Elements -->
+            <g class="cube" transform="translate(50,50) scale(0.3)">
+                <path class="cube-face" d="M-30,-30 L30,-30 L30,30 L-30,30 Z"/>
+                <path class="cube-face" d="M-30,-30 L0,-60 L60,-60 L30,-30"/>
+                <path class="cube-face" d="M30,-30 L60,-60 L60,0 L30,30"/>
+            </g>
+
+            <!-- Center Glow -->
+            <circle class="center-glow" cx="50" cy="50" r="20" fill="url(#centerGlow)"/>
+        </svg>
+
+        <!-- Enhanced Particles -->
+        <div class="particle-container">
+            <div class="particle-group">
+                <!-- Particles will be dynamically added by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Loading Text Container -->
+        <div class="loading-text-container">
+            <div class="loading-text">
+                <span class="loading-char">L</span>
+                <span class="loading-char">o</span>
+                <span class="loading-char">a</span>
+                <span class="loading-char">d</span>
+                <span class="loading-char">i</span>
+                <span class="loading-char">n</span>
+                <span class="loading-char">g</span>
+                <span class="loading-char">.</span>
+                <span class="loading-char">.</span>
+                <span class="loading-char">.</span>
+            </div>
+        </div>
+
+        <!-- Enhanced Progress Bar -->
+        <div class="loading-progress">
+            <div class="progress-bar"></div>
+            <div class="progress-glow"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -69,8 +221,14 @@
                     <h1>Welcome to Our Final Year Project</h1>
                     <p class="lead">A collaborative effort by talented students to create something extraordinary. Join us on this journey of innovation and creativity.</p>
                     <div class="hero-buttons">
-                        <a href="#team" class="btn btn-primary me-3">Meet Our Team</a>
-                        <a href="#about" class="btn btn-outline-light">Learn More</a>
+                        <div class="magnetic-wrap">
+                            <div class="magnetic-area"></div>
+                            <a href="#team" class="btn btn-primary me-3 interactive-hover" data-scroll>Meet Our Team</a>
+                        </div>
+                        <div class="magnetic-wrap">
+                            <div class="magnetic-area"></div>
+                            <a href="#about" class="btn btn-outline-light interactive-hover" data-scroll>Learn More</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
@@ -121,11 +279,11 @@
                             <div class="member-image">
                                 <img src="assets/cherinet.png" alt="Cherinet Afework">
                                 <div class="member-overlay">
-                                    <div class="member-role">Project Lead</div>
+                                    <div class="member-role">Full Stack Developer</div>
                                     <div class="member-skills">
-                                        <span>Frontend Development</span>
+                                        <span>Full Stack Development</span>
                                         <span>UI/UX Design</span>
-                                        <span>Project Management</span>
+                                        <span>Frontend and Backend Developer</span>
                                     </div>
                                 </div>
                             </div>
@@ -419,8 +577,6 @@
             </div>
         </div>
     </section>
-
-       
 
     <!-- Skills Section -->
     <section id="skills" class="skills-section">

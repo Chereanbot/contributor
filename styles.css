@@ -9,6 +9,319 @@
     --gradient-2: linear-gradient(135deg, #d420c5, #2747e8);
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
+    --cursor-size: 20px;
+}
+
+/* Custom Cursor */
+body {
+    cursor: none;
+}
+
+.custom-cursor {
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.2s ease;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+/* Cursor States */
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: rgba(39, 71, 232, 0.1);
+    border-color: var(--secondary-color);
+}
+
+.cursor-click {
+    transform: translate(-50%, -50%) scale(0.9);
+    background: var(--secondary-color);
+}
+
+/* Cursor Ripple Effect */
+.cursor-ripple {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    animation: rippleEffect 1s ease-out;
+}
+
+@keyframes rippleEffect {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(3);
+    }
+}
+
+/* Multi-Particle Trail */
+.cursor-trail {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0;
+    animation: trailFade 0.8s ease-out forwards;
+}
+
+@keyframes trailFade {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
+
+/* Magnetic Effect for Images */
+.magnetic-image {
+    position: relative;
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.magnetic-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(39, 71, 232, 0.2), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.magnetic-image:hover::after {
+    opacity: 1;
+}
+
+/* Text Highlight Effect */
+.highlight-text {
+    position: relative;
+    cursor: none;
+}
+
+.highlight-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: 100%;
+    background: rgba(39, 71, 232, 0.1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.highlight-text:hover::before {
+    transform: scaleX(1);
+}
+
+/* Glowing Cursor Effect */
+.cursor-glow {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at center, 
+        rgba(39, 71, 232, 0.2),
+        rgba(212, 32, 197, 0.1),
+        transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9996;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+}
+
+/* Interactive Elements Enhancement */
+.interactive-element {
+    position: relative;
+    cursor: none;
+    transition: all 0.3s ease;
+}
+
+.interactive-element:hover {
+    transform: translateY(-2px);
+}
+
+.interactive-element::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.interactive-element:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Cursor Text Labels */
+.cursor-text {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    background: var(--primary-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    transform: translate(10px, 10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-text.show {
+    opacity: 1;
+}
+
+/* Custom Cursor for Different Elements */
+[data-cursor="link"]:hover ~ .custom-cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+    border-color: #ff6b6b;
+}
+
+[data-cursor="button"]:hover ~ .custom-cursor {
+    transform: translate(-50%, -50%) scale(1.2);
+    background: var(--primary-color);
+    mix-blend-mode: normal;
+}
+
+[data-cursor="image"]:hover ~ .custom-cursor {
+    transform: translate(-50%, -50%) scale(1.8);
+    border-width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Effects */
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: rgba(39, 71, 232, 0.1);
+    border-color: var(--secondary-color);
+}
+
+/* Magnetic Button Effect */
+.magnetic-wrap {
+    position: relative;
+    display: inline-block;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.magnetic-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateZ(50px);
+}
+
+/* Particle Trail Effect */
+.particle {
+    pointer-events: none;
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    opacity: 0;
+    z-index: 9998;
+    animation: particleFade 1s ease-out forwards;
+}
+
+@keyframes particleFade {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Smooth Scroll Animation */
+html {
+    scroll-behavior: smooth;
+}
+
+[data-scroll] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-scroll].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Interactive Hover Effects */
+.interactive-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.interactive-hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(39, 71, 232, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.interactive-hover:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 body {
@@ -2585,4 +2898,4 @@ section:hover::before {
     transform: scale(1.1);
     background: linear-gradient(135deg, rgba(39, 71, 232, 0.4), rgba(212, 32, 197, 0.4));
     cursor: pointer;
-} 
+}
